@@ -11,7 +11,7 @@ require_once('../core/PDOManager.php');
 require_once('../model/User.php');
 class PDOUserManager
 {
-    public function addUser($firstname, $lastname, $email, $password,  $job){
+    public function createUser($firstname, $lastname, $email, $password,  $job){
         try{
             $PDOManager = new PDOManager();
             $pdo = $PDOManager->newPDO();
@@ -33,7 +33,32 @@ class PDOUserManager
         }
     }
 
-    public function authenticate($email, $password){
+    public function udapteUser($firstname, $lastname, $email, $password, $job){
+        $PDOManager = new PDOManager();
+        $pdo = $PDOManager->newPDO();
+        $results = $pdo->prepare("UPDATE users SET firstname=':firstname' , lastname=':lastname', email=':email', password=':password', job=':job' WHERE email='$email' ");
+        $results->execute(array(
+            ':firstname' => $firstname,
+            ':lastname' => $lastname,
+            ':email' => $email,
+            ':password' => $password,
+            ':job' => $job
+        ));
+
+        $user=new User($pdo->lastInsertId(), $firstname, $lastname, $email, $password, $job);
+
+        return $user;
+    }
+
+    public function deleteUser($email){
+        $PDOManager = new PDOManager();
+        $pdo = $PDOManager->newPDO();
+
+        $pdo->exec("DELETE FROM users WHERE email='$email'");
+        header('Location:login.php');
+    }
+
+    public function readUser($email, $password){
         try{
             $PDOManager = new PDOManager();
             $pdo = $PDOManager->newPDO();
@@ -46,4 +71,6 @@ class PDOUserManager
             echo 'error authenticate';
         }
     }
+
+
 }

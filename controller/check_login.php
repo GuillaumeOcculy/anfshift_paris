@@ -12,7 +12,7 @@ session_start();
 
 if(isset($_POST['email']) && isset($_POST['password'])){
     $PDOUserManager = new PDOUserManager();
-    $auth = $PDOUserManager->authenticate($_POST['email'], $_POST['password']);
+    $auth = $PDOUserManager->readUser($_POST['email'], $_POST['password']);
 
     $_SESSION['firstname'] = $auth->getFirstname();
     $_SESSION['lastname'] = $auth->getLastname();

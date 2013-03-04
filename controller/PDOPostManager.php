@@ -11,7 +11,7 @@ require_once('../core/PDOManager.php');
 require_once('../model/Post.php');
 class PDOPostManager
 {
-    public function addPost($date, $body, $job, $user){
+    public function createPost($date, $body, $job, $user){
         $PDOManager = new PDOManager();
         $pdo = $PDOManager->newPDO();
         $postRegister = $pdo->prepare("INSERT INTO posts (date_publish, body, job, user_publish)VALUES(:date_publish, :body, :job, :user_publish)");

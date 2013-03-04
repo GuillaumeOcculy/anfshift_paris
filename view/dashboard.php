@@ -31,7 +31,7 @@
 <body>
 <a href="logout.php">Log out</a>
 <h1>Login</h1>
-
+<a href="profil.php">Profil</a>
 <form action="../controller/check_post.php" method="POST">
     <input type="date" max="2013-12-31" name="date" required>
     <input type="time" name="time"  value="10:00" required>

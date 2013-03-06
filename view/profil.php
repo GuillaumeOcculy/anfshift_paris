@@ -7,6 +7,11 @@
  * To change this template use File | Settings | File Templates.
  */
 session_start();
+
+if (!isset($_SESSION['email'])) {
+      # code...
+      header('Location:login.php');
+    }
 ?>
 
 <a href="delete_account.php">Delete account</a>

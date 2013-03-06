@@ -41,6 +41,16 @@ if(isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['emai
         $_SESSION['email'] = $userRegister->getEmail();
         $_SESSION['job'] = $userRegister->getJob();
 
+        $to = 'occuly.guillaume@gmail.com';
+    $subject = "Test mail";
+    $message = "Hello!";
+    $from = "someonelse@example.com";
+    $headers = "From:" . $from;
+        mail($to,$subject,$message);
+
+        echo "Mail Sent.";
+
+
         header('Location:/anfshift/view/dashboard.php');
 
     }

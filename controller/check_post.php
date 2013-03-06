@@ -15,6 +15,9 @@ $user_publish = $_SESSION['firstname'] . ' ' . $_SESSION['lastname'];
 
 if(isset($_POST['date']) && isset($_POST['body'])){
     $PDOPostManager = new PDOPostManager();
-    $PDOPostManager->createPost($_POST['date'], $_POST['body'], $_SESSION['job'] , $user_publish);
+    $PDOPostManager->createPost($_POST['date'],$_POST['time'], $_POST['body'], $user_publish, $_SESSION['job']);
     header('Location:/anfshift/view/dashboard.php');
+}
+else{
+    echo 'error checkpost';
 }

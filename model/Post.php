@@ -10,23 +10,14 @@ class Post
 {
     private $id, $body, $job, $user , $date, $time;
 
-    public function setDate($date)
-    {
-        $this->date = $date;
-    }
-
-    public function getDate()
-    {
-        return $this->date;
-    }
-
-    function __construct($id, $body, $job, $user, $date)
+    function __construct($id, $date, $time, $body, $user, $job)
     {
         $this->body = $body;
+        $this->date = $date;
         $this->id = $id;
         $this->job = $job;
+        $this->time = $time;
         $this->user = $user;
-        $this->date = $date;
     }
 
     public function setBody($body)
@@ -37,6 +28,16 @@ class Post
     public function getBody()
     {
         return $this->body;
+    }
+
+    public function setDate($date)
+    {
+        $this->date = $date;
+    }
+
+    public function getDate()
+    {
+        return $this->date;
     }
 
     public function setId($id)
@@ -59,6 +60,16 @@ class Post
         return $this->job;
     }
 
+    public function setTime($time)
+    {
+        $this->time = $time;
+    }
+
+    public function getTime()
+    {
+        return $this->time;
+    }
+
     public function setUser($user)
     {
         $this->user = $user;
@@ -68,6 +79,7 @@ class Post
     {
         return $this->user;
     }
+
 
 
 

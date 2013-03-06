@@ -43,66 +43,73 @@
       </div>
     </header>
 
-<section>
-    <div class="container">
-      <div class="row-fluid">
-        <div class="span4">
+    <section>
+      <div class="container">
+        <div class="row-fluid">
+          <div class="span4">
             <div class="hero-unit">
-                <p><?php echo $_SESSION['firstname'] .' ' . $_SESSION['lastname'];?></p>
-          <p><?php echo $_SESSION['job'];?></p>
-          <p>Shifts : </p>
+              <h4><?php echo $_SESSION['firstname'] .' ' . $_SESSION['lastname'];?></h4>
+              <p><?php echo $_SESSION['job'];?></p>
+            
+              
+
+
+  
+              <form class="form-inline" action="../controller/check_post.php" method="POST">
+                <input type="date" max="2013-12-31" min="2013-03-07" value="2013-03-01" name="date" required>
+                <input type="time" name="time"  value="10:00" required>
+                
+                <textarea name="body" id="" cols="30" rows="5" placeholder="For monday at 15:00" required></textarea>
+                <button type="submit" class="btn btn-inverse btn-large">Publish</button>
+              </form>
 
             </div>
-          
-        </div>
-        <div class="span8">
-
-      <div class="hero-unit">
-            <form class="form-inline" action="../controller/check_post.php" method="POST">
-            <input type="date" max="2013-12-31" min="2013-03-07" value="2013-03-01" name="date" required>
-            <input type="time" name="time"  value="10:00" required>
-            
-            <textarea name="body" id="" cols="30" rows="2" placeholder="For monday at 15:00"required></textarea>
-            <button type="submit" class="btn btn-inverse btn-large">Publish</button>
-          </form>
-
-          <table class="table table-hover">
-            <tr>
-              <th>Date</th>
-              <th>Body</th>
-              <th>Associate</th>
-            </tr>
-
-            <tbody>
-              <?php
-              foreach($post as $posts){
-                echo '<tr><td>' .$posts['date_publish'].'</td>' ;
-                echo '<td>' .$posts['body'].'</td>' ;
-                echo '<td>' .$posts['user_publish'].'</td>' ;
-                echo '<td><a href="comment.php?id='.$posts['id'].'">Reply</a></td></tr>';
-              }
-              ?>
-            </tbody>
-          </table>
 
           </div>
+          <div class="span8">
 
-          
+            <div class="hero-unit">
+
+                <h3>Shifts posts</h3>
+              <table class="table table-hover table-bordered">
+                <tr>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Message</th>
+
+                </tr>
+
+                <tbody>
+                  <?php
+                  foreach($post as $posts){
+                    echo '<tr><td>' .$posts['date_publish'].'</td>' ;
+                    echo '<td>' .$posts['time_publish'].'</td>' ;
+                    echo '<td>' .$posts['body'].'</td>' ;
+
+                    echo '<td><a href="comment.php?id='.$posts['id'].'">Reply</a></td></tr>';
+                  }
+                  ?>
+                </tbody>
+              </table>
+
+            </div>
 
 
 
+
+
+
+          </div>
 
         </div>
 
       </div>
 
-    </div>
-
-  </section>
+    </section>
     
 
 
 
 
-    </body>
-    </html>
+  </body>
+  </html>

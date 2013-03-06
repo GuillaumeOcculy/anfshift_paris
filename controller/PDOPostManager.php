@@ -11,23 +11,29 @@ require_once('../core/PDOManager.php');
 require_once('../model/Post.php');
 class PDOPostManager
 {
-    public function createPost($date, $body, $job, $user){
-        $PDOManager = new PDOManager();
-        $pdo = $PDOManager->newPDO();
-        $postRegister = $pdo->prepare("INSERT INTO posts (date_publish, body, job, user_publish)VALUES(:date_publish, :body, :job, :user_publish)");
-        $postRegister->execute(array(
-            ':date_publish' => $date,
-            ':body' => $body,
-            ':job' => $job,
-            ':user_publish' => $user
-        ));
-        new Post($pdo->lastInsertId(), $body, $job, $user, $date);
+    public function createPost($date, $time, $body, $user, $job){
+        try{
+            $PDOManager = new PDOManager();
+            $pdo = $PDOManager->newPDO();
+            $postRegister = $pdo->prepare("INSERT INTO posts (date_publish, time_publish, body, job, user_publish)VALUES(:date_publish, :time_publish, :body, :job, :user_publish)");
+            $postRegister->execute(array(
+                ':date_publish' => $date,
+                'time_publish' => $time,
+                ':body' => $body,
+                ':job' => $job,
+                ':user_publish' => $user
+            ));
+            new Post($pdo->lastInsertId(), $date, $time, $body, $user, $job);
+        }catch (Exception $e){
+            echo 'error createPost';
+        }
+
     }
 
     public function findPostByJob($job){
         $PDOManager = new PDOManager();
         $pdo = $PDOManager->newPDO();
-        $postFindPostByJob = $pdo->query("SELECT * FROM posts WHERE job='$job' ORDER BY date_publish DESC");
+        $postFindPostByJob = $pdo->query("SELECT id, DATE_FORMAT(date_publish, '%d/%m') AS date_publish, time_publish, body, user_publish FROM posts WHERE job='$job' ORDER BY date_publish DESC");
         $results = $postFindPostByJob->fetchAll(PDO::FETCH_BOTH);
 
         return $results;

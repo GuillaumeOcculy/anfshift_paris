@@ -20,15 +20,45 @@ if (!isset($_SESSION['email'])) {
 <head>
   <title>AnfShift</title>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="http://code.jquery.com/jquery.js"></script>
+  <script src="/twitter-bootstrap/twitter-bootstrap-v2>
+/js/bootstrap-modal.js"></script>
   <link rel="stylesheet" href="../docs/assets/css/bootstrap.css">
   <link rel="stylesheet" href="../docs/assets/css/style.css">
+
   <link rel="stylesheet" href="../docs/assets/js/bootstrap-modal.js">
+  <link rel="stylesheet" href="../docs/assets/js/bootstrap.js">
+  <link rel="stylesheet" href="../docs/assets/js/bootstrap-transition.js">
   <link rel="stylesheet" href="../docs/assets/js/jquery.js">
   <link rel="stylesheet" href="../js/bootstrap-modal.js">
+  <link rel="stylesheet" href="../js/bootstrap-transition.js">
 
   
 </head>
 <body>
+
+<div class="container">  
+<h2>Example of creating Modals with Twitter Bootstrap</h2>  
+<div id="example" class="modal hide fade in" style="display: none; ">  
+<div class="modal-header">  
+<a class="close" data-dismiss="modal">×</a>  
+<h3>This is a Modal Heading</h3>  
+</div>  
+<div class="modal-body">  
+<h4>Text in a modal</h4>  
+<p>You can add some text here.</p>                
+</div>  
+<div class="modal-footer">  
+<a href="#" class="btn btn-success">Call to action</a>  
+<a href="#" class="btn" data-dismiss="modal">Close</a>  
+</div>  
+</div>  
+<p><a data-toggle="modal" href="#example" class="btn btn-primary btn-large">Launch demo modal</a></p>  
+</div>  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+<script src="/twitter-bootstrap/twitter-bootstrap-v2/js/bootstrap-modal.js"></script>  
+
+
   <header>
      <div class="navbar navbar-static-top">
         <div class="navbar-inner">

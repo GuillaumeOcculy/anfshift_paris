@@ -15,6 +15,7 @@
   <title>AnfShift</title>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <link rel="stylesheet" href="../docs/assets/css/bootstrap.css">
+  <meta charset="utf-8">
   <link rel="stylesheet" href="../docs/assets/css/style.css">
 </head>
 <body>

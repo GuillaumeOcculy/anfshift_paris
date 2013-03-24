@@ -34,27 +34,25 @@ if(isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['emai
         $PDOUserManager = new PDOUserManager();
         $userRegister = $PDOUserManager->createUser($_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['password'], $_POST['job']);
 
-        $user=new User($pdo->lastInsertId(), $firstname, $lastname, $email, $password, $job);
-
         $_SESSION['firstname'] = $userRegister->getFirstname();
         $_SESSION['lastname'] = $userRegister->getLastname();
         $_SESSION['email'] = $userRegister->getEmail();
         $_SESSION['job'] = $userRegister->getJob();
 
-        $to = 'occuly.guillaume@gmail.com';
-    $subject = "Test mail";
-    $message = "Hello!";
-    $from = "someonelse@example.com";
-    $headers = "From:" . $from;
-        mail($to,$subject,$message);
-
-        echo "Mail Sent.";
-
+//        $to = 'occuly.guillaume@gmail.com';
+//    $subject = "Test mail";
+//    $message = "Hello!";
+//    $from = "someonelse@example.com";
+//    $headers = "From:" . $from;
+//        mail($to,$subject,$message);
+//
+//        echo "Mail Sent.";
 
         header('Location:/anfshift/view/dashboard.php');
 
     }
 }
+
 else{
     echo 'pas cool';
 }

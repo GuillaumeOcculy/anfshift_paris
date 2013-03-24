@@ -24,10 +24,11 @@ if(isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['emai
 
         //$user=new User($pdo->lastInsertId(), $firstname, $lastname, $email, $password, $job);
 
-        $_SESSION['firstname'] = $userUpdate->getFirstname();
-        $_SESSION['lastname'] = $userUpdate->getLastname();
-        $_SESSION['email'] = $userUpdate->getEmail();
-        $_SESSION['job'] = $userUpdate->getJob();
+        $_SESSION['firstname'] = $userUpdate->setFirstname($_POST['firstname']);
+        $_SESSION['lastname'] = $userUpdate->setLastname($_POST['lastname']);
+        $_SESSION['email'] = $userUpdate->setEmail($_POST['email']);
+        $_SESSION['job'] = $userUpdate->setJob($_POST['job']);
+        $userUpdate->setPassword($_POST['password']);
 
         header('Location:/anfshift/view/dashboard.php');
 

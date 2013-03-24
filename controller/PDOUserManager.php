@@ -24,9 +24,9 @@ class PDOUserManager
                 ':job' => $job
             ));
 
-            $user=new User($pdo->lastInsertId(), $firstname, $lastname, $email, $password, $job);
+           return new User($pdo->lastInsertId(), $firstname, $lastname, $email, $password, $job);
 
-            return $user;
+
 
         }catch (Exception $e){
             echo 'error register';
@@ -36,7 +36,7 @@ class PDOUserManager
     public function udapteUser($firstname, $lastname, $email, $password, $job){
         $PDOManager = new PDOManager();
         $pdo = $PDOManager->newPDO();
-        $results = $pdo->prepare("UPDATE users SET firstname=':firstname' , lastname=':lastname', email=':email', password=':password', job=':job' WHERE email='$email' ");
+        $results = $pdo->prepare("UPDATE users SET firstname=':firstname', lastname=':lastname', email=':email', password=':password', job=':job' WHERE email='$email' ");
         $results->execute(array(
             ':firstname' => $firstname,
             ':lastname' => $lastname,
@@ -63,10 +63,11 @@ class PDOUserManager
             $PDOManager = new PDOManager();
             $pdo = $PDOManager->newPDO();
             $results = $pdo->query("SELECT * FROM users WHERE email= '$email' AND password='$password'");
-            $results= $results->fetch(PDO::FETCH_ASSOC);
-            $user = new User($results['id'], $results['firstname'], $results['lastname'], $results['email'], $results['password'], $results['job']);
+            $results = $results->fetch(PDO::FETCH_ASSOC);
 
-            return $user;
+            return new User($results['id'], $results['firstname'], $results['lastname'], $results['email'], $results['password'], $results['job']);
+
+
         }catch (Exception $e){
             echo 'error authenticate';
         }

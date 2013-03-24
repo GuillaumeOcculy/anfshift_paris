@@ -18,6 +18,7 @@
   <title>AnfShift</title>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <link rel="stylesheet" href="../docs/assets/css/bootstrap.css">
+  <meta charset="utf-8">
   <link rel="stylesheet" href="../docs/assets/css/style.css">
 </head>
 <body>
@@ -84,8 +85,8 @@
 
             <select name="job" required>
               <option value="cashier">Cashier</option>
-              <option value="impact1">Impact 1</option>
-              <option value="impact2">Impact 2</option>
+              <option value="impact_1">Impact 1</option>
+              <option value="impact_2">Impact 2</option>
               <option value="model">Model</option>
               <option value="ops">OPS</option>
               <option value="stylist">Stylist</option>

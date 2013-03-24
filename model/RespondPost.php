@@ -9,14 +9,14 @@
 class Comment
 {
 
-      private $id, $job, $user_publish, $post, $body;
+      private $id, $job, $user_publish, $postId, $body;
 
-    function __construct($id, $body, $job, $post, $user_publish)
+    function __construct($id, $body, $job, $postId, $user_publish)
     {
         $this->body = $body;
         $this->id = $id;
         $this->job = $job;
-        $this->post = $post;
+        $this->postId = $postId;
         $this->user_publish = $user_publish;
     }
 

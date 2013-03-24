@@ -23,7 +23,7 @@ class PDOPostManager
                 ':job' => $job,
                 ':user_publish' => $user
             ));
-            new Post($pdo->lastInsertId(), $date, $time, $body, $user, $job);
+
         }catch (Exception $e){
             echo 'error createPost';
         }
@@ -37,7 +37,71 @@ class PDOPostManager
         $results = $postFindPostByJob->fetchAll(PDO::FETCH_BOTH);
 
         return $results;
+    }
 
+    public function findAllPost(){
+        $PDOManager = new PDOManager();
+        $pdo = $PDOManager->newPDO();
+        $postFindAllPost = $pdo->query("SELECT * FROM posts");
+        $results = $postFindAllPost->fetchAll(PDO::FETCH_BOTH);
+
+        return $results;
+    }
+
+    public function findPostByUser($user_publish){
+        $PDOManager = new PDOManager();
+        $pdo = $PDOManager->newPDO();
+        $findPostByUser = $pdo->query("SELECT * FROM posts WHERE user_publish = '$user_publish' ");
+        $results = $findPostByUser->fetchAll(PDO::FETCH_BOTH);
+
+        return $results;
+    }
+
+    public function findPostById(){
+        $PDOManager = new PDOManager();
+        $pdo = $PDOManager->newPDO();
+        $findPostById = $pdo->prepare("SELECT DATE_FORMAT(date_publish, '%d/%m') AS date_publish, time_publish, user_publish, body FROM posts WHERE id = :id");
+        $findPostById->execute(array(
+            ":id" => $_GET['id']
+        ));
+        $results = $findPostById->fetchAll(PDO::FETCH_ASSOC);
+
+        return $results;
+    }
+
+    public function countPostByUser($user){
+        $PDOManager = new PDOManager();
+        $pdo = $PDOManager->newPDO();
+        $countPostByUser = $pdo->query("SELECT count(*) AS number_post_by_user WHERE user_publish = '$user'");
+        $results = $countPostByUser->fetchAll(PDO::FETCH_BOTH);
+
+        return $results;
+    }
+
+    public function countPostByJob($job){
+        $PDOManager = new PDOManager();
+        $pdo = $PDOManager->newPDO();
+        $countPostByJob = $pdo->query("SELECT * FROM posts WHERE job = '$job'");
+        $results = $countPostByJob->fetchAll(PDO::FETCH_BOTH);
+
+        return $results;
+    }
+
+    public function countAllPost(){
+        $PDOManager = new PDOManager();
+        $pdo = $PDOManager->newPDO();
+        $countPostByJob = $pdo->query("SELECT COUNT(*) AS number_post ");
+        $results = $countPostByJob->fetchAll(PDO::FETCH_BOTH);
+
+        return $results;
+    }
+
+    public function deletePostById($id){
+        $PDOManager = new PDOManager();
+        $pdo = $PDOManager->newPDO();
+
+        $pdo->exec("DELETE FROM posts WHERE id='$id'");
+        
     }
 
 

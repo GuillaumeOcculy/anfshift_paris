@@ -20,44 +20,12 @@ if (!isset($_SESSION['email'])) {
 <head>
   <title>AnfShift</title>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="http://code.jquery.com/jquery.js"></script>
-  <script src="/twitter-bootstrap/twitter-bootstrap-v2>
-/js/bootstrap-modal.js"></script>
+ <meta charset="utf-8">
   <link rel="stylesheet" href="../docs/assets/css/bootstrap.css">
   <link rel="stylesheet" href="../docs/assets/css/style.css">
+  <script src="../docs/assets/js/bootstrap.js"></script>
 
-  <link rel="stylesheet" href="../docs/assets/js/bootstrap-modal.js">
-  <link rel="stylesheet" href="../docs/assets/js/bootstrap.js">
-  <link rel="stylesheet" href="../docs/assets/js/bootstrap-transition.js">
-  <link rel="stylesheet" href="../docs/assets/js/jquery.js">
-  <link rel="stylesheet" href="../js/bootstrap-modal.js">
-  <link rel="stylesheet" href="../js/bootstrap-transition.js">
-
-  
-</head>
 <body>
-
-<div class="container">  
-<h2>Example of creating Modals with Twitter Bootstrap</h2>  
-<div id="example" class="modal hide fade in" style="display: none; ">  
-<div class="modal-header">  
-<a class="close" data-dismiss="modal">×</a>  
-<h3>This is a Modal Heading</h3>  
-</div>  
-<div class="modal-body">  
-<h4>Text in a modal</h4>  
-<p>You can add some text here.</p>                
-</div>  
-<div class="modal-footer">  
-<a href="#" class="btn btn-success">Call to action</a>  
-<a href="#" class="btn" data-dismiss="modal">Close</a>  
-</div>  
-</div>  
-<p><a data-toggle="modal" href="#example" class="btn btn-primary btn-large">Launch demo modal</a></p>  
-</div>  
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
-<script src="/twitter-bootstrap/twitter-bootstrap-v2/js/bootstrap-modal.js"></script>  
-
 
   <header>
      <div class="navbar navbar-static-top">
@@ -73,14 +41,6 @@ if (!isset($_SESSION['email'])) {
   </div>
 </div>
 </header>
-
-
-
-
-
-
-
-
 
 
 
@@ -102,7 +62,7 @@ if (!isset($_SESSION['email'])) {
         <h3>Profil</h3>
 
 
-        <form class="form-horizontal" action="../controller/check_register.php" method="POST" >
+        <form class="form-horizontal" action="../controller/check_profil.php" method="POST" >
 
             <div class="control-group">
               <div class="controls">
@@ -139,8 +99,8 @@ if (!isset($_SESSION['email'])) {
 
     <select name="job" required>
       <option value="cashier">Cashier</option>
-      <option value="impact1">Impact 1</option>
-      <option value="impact2">Impact 2</option>
+      <option value="impact_1">Impact 1</option>
+      <option value="impact_2">Impact 2</option>
       <option value="model">Model</option>
       <option value="stylist">Stylist</option>
   </select>
@@ -158,24 +118,25 @@ if (!isset($_SESSION['email'])) {
 
 </form>
 
-<a href="delete_account.php" class="btn btn-danger btn-large">Delete account</a>
+<!--<a href="delete_account.php" class="btn btn-danger btn-large">Delete account</a>-->
 
 
 <!-- Button to trigger modal -->
-<a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
+<a href="#myModal" role="button" class="btn btn-danger btn-large" data-toggle="modal">Delete account</a>
  
 <!-- Modal -->
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Modal header</h3>
+    <h3 id="myModalLabel">Warning</h3>
   </div>
   <div class="modal-body">
-    <p>One fine body…</p>
+    <p>You will destroy your account</p>
+    <p>Are you sur ?</p>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-primary">Save changes</button>
+    <a href="delete_account.php" class="btn btn-danger">Destroy account</a>
   </div>
 </div>
 
@@ -188,35 +149,9 @@ if (!isset($_SESSION['email'])) {
 
 
 
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+</body>
 
 
-
-
-
-
-
-
-
-
-
-<a href="delete_account.php">Delete account</a>
-
-<form action="../controller/check_profil.php" method="POST" id="formcom">
-    <input type="text" name="firstname" value="<?php echo $_SESSION["firstname"]  ?>" placeholder="firstname" >
-    <input type="text" name="lastname" value="<?php echo $_SESSION["lastname"]  ?>" placeholder="lastname" required>
-    <input type="text" name="email" value="<?php echo $_SESSION["email"]  ?>" placeholder="email" required>
-    <input type="password" name="password"  placeholder="password" required>
-    <input type="password" name="confirmPassword" placeholder="confirmPassword">
-
-    <select name="job" required>
-
-        <option value="cashier">Cashier</option>
-        <option value="impact1">Impact 1</option>
-        <option value="impact2">Impact 2</option>
-        <option value="model">Model</option>
-        <option value="ops">OPS</option>
-        <option value="stylist">Stylist</option>
-
-    </select>
-    <button type="submit">Update profil</button>
-</form>
+</html>
